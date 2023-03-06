@@ -32,7 +32,7 @@
                     @if(strpos($item->image, 'css://') !== false)
                         <span class="{{ substr($item->image, 6) }}"></span>
                     @else
-                        <img src="{{ $item->image }}" alt="" width="48px" height="48px">
+                        <img src="{{env('APP_URL') . $item->image }}" alt="" width="48px" height="48px">
                     @endif
                 </td>
                 <td><a href="{{ route('admin.countries.destroy', $item->id) }}" class="btn btn-danger"><i
