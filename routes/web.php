@@ -29,12 +29,13 @@ Route::resource($prefix . 'users', \App\Http\Controllers\Admin\UserController::c
     ->only($methods)->names('admin.users');
 // Operators
 Route::get($prefix . 'operators/gets/{country}', [\App\Http\Controllers\Admin\OperatorController::class, 'gets'])->name('admin.operator.gets');
+// bots
+$methods = ['index', 'create', 'edit', 'store', 'update', 'destroy'];
+Route::resource($prefix . 'bots', \App\Http\Controllers\Admin\BotController::class)
+    ->only($methods)->names('admin.bots');
 
 
 // Проверка API
-$methods = ['balance', 'index', 'test'];
-Route::resource('sim', \App\Http\Controllers\SimController::class)
-    ->only($methods)->names('sim');
 Route::get('sim/balance', [\App\Http\Controllers\SimController::class, 'balance']);
 Route::get('sim/test', [\App\Http\Controllers\SimController::class, 'test']);
 Route::get('sim/countries', [\App\Http\Controllers\SimController::class, 'countries']);
@@ -50,3 +51,9 @@ Route::get('setLanguage', [\App\Http\Controllers\ApiController::class, 'setLangu
 Route::get('services', [\App\Http\Controllers\ApiController::class, 'services']);
 
 
+// API для модуля:
+Route::get('ping', [\App\Http\Controllers\BotController::class, 'ping']);
+Route::get('create', [\App\Http\Controllers\BotController::class, 'create']);
+Route::get('error', [\App\Http\Controllers\BotController::class, 'error']);
+Route::get('get', [\App\Http\Controllers\BotController::class, 'get']);
+Route::post('update', [\App\Http\Controllers\BotController::class, 'update']);

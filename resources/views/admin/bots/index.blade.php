@@ -7,15 +7,14 @@
 @extends('layouts.app')
 
 @section('content')
-    <h2>Пользователи</h2>
     <table @class(['table'])>
         <thead>
         <tr>
             <th scope="col">#</th>
-            <th scope="col">tg_id</th>
-            <th scope="col">country_id</th>
-            <th scope="col">operator_id</th>
-            <th scope="col">language</th>
+            <th scope="col">public_key</th>
+            <th scope="col">bot_id</th>
+            <th scope="col">percent</th>
+            <th scope="col">category_id</th>
         </tr>
         </thead>
         <tbody>
@@ -25,10 +24,10 @@
         @foreach($paginator->getCollection() as $item)
             <tr>
                 <th scope="col">{{ $item->id }}</th>
-                <td>{{ $item->tg_id }}</td>
-                <td>{{ $item->country_id }}</td>
-                <td>{{ $item->operator_id }}</td>
-                <td>{{ $item->language }}</td>
+                <td><a href="{{ route('admin.bots.edit', $item->id) }}">{{ $item->public_key }}</a></td>
+                <td>{{ $item->bot_id }}</td>
+                <td>{{ $item->percent }}</td>
+                <td>{{ $item->category_id }}</td>
             </tr>
         @endforeach
         </tbody>

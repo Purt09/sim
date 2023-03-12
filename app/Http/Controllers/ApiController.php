@@ -32,6 +32,18 @@ class ApiController
             'type' => 'css',
             'link' => env('APP_URL') . '/css/app.css'
         ];
+        $result[] = [
+            'type' => 'img',
+            'link' => env('APP_URL') . '/img/flags.png'
+        ];
+        $result[] = [
+            'type' => 'img',
+            'link' => env('APP_URL') . '/img/world.png'
+        ];
+        $result[] = [
+            'type' => 'img',
+            'link' => env('APP_URL') . '/img/product.png'
+        ];
         return ApiHelper::success($result);
     }
 

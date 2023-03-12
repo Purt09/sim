@@ -59,9 +59,6 @@ class SimController extends Controller
             $operatorModel->save();
             foreach ($country as $key => $operator) {
                 if($operator['activation'] == 1) {
-                    // $existOperator = Operator::query()->where(['name' => $key])->exists();
-                    // if($existOperator)
-                    //     continue;
                     $operatorModel = new Operator();
                     $operatorModel->name = $key;
                     $operatorModel->country_id = $countryModel->id;
